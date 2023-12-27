@@ -26,8 +26,9 @@ ul li p {
 }
 
 
-ul li p:active { 
+ul li p:hover { 
     outline: none; 
+    color: lightgrey;
 } 
 
 #block1, #block2, #block4, #block5,#block7,#block8 {
