@@ -1,4 +1,4 @@
-let block = []
+let blockClick = []
 
 let GameState = {
 
@@ -16,18 +16,22 @@ const winStates = [(0,1,2),(3,4,5),(6,7,8),(0,3,6),(1,4,7),(2,5,8), (0,4,8),(2,4
 for (let k=0; k < 9; k++) {
 
 
-    GameTree.append(...GameState);
-    GameTree[k].stateData =  Document.getElementById("block" + (k+1));
+    GameTree.push(JSON.parse(JSON.stringify(GameState)));
+    GameTree[k].stateData =  document.getElementById("block" + (k+ 1));
+    
+    blockClick.push(()=>{
 
-    block.append(()=>{
 
-        let hadBotCircled = GameTree[k].stateData.textContent === 'O';
+        let hasBotCircled = GameTree[k].stateData.textContent === "O";
+        let isBlockEmpty = GameTree[k].stateData.textContent === ''; 
 
-        if(!hadBotCircled){
+        if(!hasBotCircled && isBlockEmpty){
+            //alert("number: " + k);
+           // alert(GameTree[k].stateData.textContent);
+        
 
             GameTree[k].stateData.textContent = "X";
         }
-
 
     });
 }
