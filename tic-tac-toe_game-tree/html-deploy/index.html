@@ -9,10 +9,12 @@
     
     <body> 
         <div id="center"> 
-            <h1>Play Tic-Tac-Toe:</h1> 
+          <!--- <h1> Tic-Tac-Toe:</h1>--> 
+          <br>
+ 
             <h2> You VS A.I.</h2>
     
-            <br><br>
+            <br>
             <!--Code to setup the buttons-->
             <ul style="display:flex;list-style:none;"> 
                 <li style="border-right: 1px solid gray;"> 
@@ -22,7 +24,7 @@
                 </li> 
                 <li  style="border-right: 1px solid gray;"> 
                     <p id= "block4" onclick="blockClick[3]()">O</p> 
-                    <p id= "block5" style="color: rgb(138, 21, 21);" onclick="blockClick[4]()">X</p>
+                    <p id= "block5" style="color: rgb(138, 21, 21);" onclick="blockClick[4]()"></p>
                     <p id= "block6" style="color: rgb(138, 21, 21);" onclick="blockClick[5]()"> X</p>
                 </li> 
                 <li id="row3"> 
@@ -34,7 +36,7 @@
             <br>
             
             <button id="btnReset" onclick="restartGame()"> 
-                Restart Game 
+                Reset Game 
             </button> 
             <script  src="script.js"></script>
 
