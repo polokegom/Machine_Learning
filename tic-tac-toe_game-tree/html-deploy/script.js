@@ -17,8 +17,7 @@ for (let k=0; k < 9; k++) {
 
 
     GameTree.push(JSON.parse(JSON.stringify(GameState)));
-    GameTree[k].stateData =  document.getElementById("block" + (k+ 1));
-    
+    GameTree[k].stateData =  document.getElementById("block" + (k+ 1));    
     blockClick.push(()=>{
 
 
@@ -34,4 +33,12 @@ for (let k=0; k < 9; k++) {
         }
 
     });
+}
+
+function restartGame() {
+
+
+    blockClick = []
+
+
 }

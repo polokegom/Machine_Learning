@@ -21,7 +21,8 @@ ul li p {
     justify-content: center; 
     font-size: 24px; 
     text-align: center; 
-    cursor: pointer;     
+    cursor: pointer;   
+    color: rgb(138, 21, 21);  
 
 }
 
