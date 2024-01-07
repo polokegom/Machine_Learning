@@ -1,0 +1,1 @@
+https://www.kaggle.com/code/gauravduttakiit/categorize-countries-using-k-means-pca
