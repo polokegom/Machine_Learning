@@ -88,10 +88,12 @@ for (let k = 0; k < 9; k++) {
             let isBlockEmpty = MainGameTree[k].webElementParagraph.textContent === '';
 
             if (!hasBotCircled && isBlockEmpty) {
-
-                playGame = false;
                 selectABlock(MainGameTree[k], "X", "rgb(138, 21, 21)")
 
+                //Get all player moves
+                //listAllPlayerMoves = MainGameTree.filter(el => el.stateData === "X").map(el => el.indexOfState)
+               ///checkIsWinner(listAllPlayersMoves);
+                //alert(listAllPlayerMoves)
                 //A.I. bot moves
                 let tempRoot = JSON.parse(JSON.stringify(MainGameTree));
                 count = 0;
@@ -99,25 +101,18 @@ for (let k = 0; k < 9; k++) {
                 winningPlayerRoutes = []
                 findVictoryPath(tempRoot, [], winningAIRoutes, [], winningPlayerRoutes, false);
     //            alert("^^^^\nMax Player winning route: " + winningPlayerRoutes.length + "\n^^^^^^^")
-    //          alert("^^^^\nMax winning route: " + winningAIRoutes.length + "\n^^^^^^^")
-
+              //alert("^^^^\nMax winning route: " + winningAIRoutes.length + "\n^^^^^^^")
+              /*
                 let blockOptions = MainGameTree.filter((element) => element.stateData === "")
-
-
                 if (winningAIRoutes.length === 0 && (blockOptions.length !== 0)) {
                     
                     const randClick = Math.round(Math.random() * (blockOptions.length - 1))
                     selectABlock(MainGameTree[blockOptions[randClick].indexOfState], "O", "blue")
                 }
-
+                */
                 blockOptions = MainGameTree.filter((element) => element.stateData === "")
 
-                if (winningAIRoutes.length === 0 && blockOptions.length === 0) {
-                    
-                    alert("It's a draw")
-                    playGame = false
-                    return
-                }            
+
                 
                 /* 
                     Analyse dataset & make move
@@ -128,24 +123,9 @@ for (let k = 0; k < 9; k++) {
                     if (!uniqPlayerHighRateWin.includes(Number(element)))
                         uniqPlayerHighRateWin.push(Number(element))
                 })
-
-
-                /*  
-                If probability of player to win is High
-                the A.I. will cohose a defensive strategy
-                */
-                if (uniqPlayerHighRateWin.length > 0) {
-                    selectABlock(MainGameTree[uniqPlayerHighRateWin[0]], "O", "blue")
-
-                } else {
-
-                    /* 
-                    Alternatively the A.I. will choose an offensive strategy
-                    */
-
-                    //Check if instant win
-                    let listOfInstantWin = winningAIRoutes.filter(winRoute => winRoute.length == 1)
-
+                //Check if instant A.I. win
+                let listOfInstantWin = winningAIRoutes.filter(winRoute => winRoute.length == 1)
+                if ((blockOptions.length !== 0))
                     if (listOfInstantWin.length > 0) {
 
                         selectABlock(MainGameTree[listOfInstantWin[0]], "O", "blue")
@@ -153,13 +133,24 @@ for (let k = 0; k < 9; k++) {
                         playGame = false
                         
 
-                    } else {
-                        /*
-                            Choose best strategic move for victory
+                    } else if (uniqPlayerHighRateWin.length > 0 ) {
+                        /*  
+                        If probability of player to win is High
+                        the A.I. will cohose a defensive strategy
+                        */                    
+                        selectABlock(MainGameTree[uniqPlayerHighRateWin[0]], "O", "blue")
+
+                    } else if (winningAIRoutes.length !== 0){
+
+                        /* 
+                        Alternatively the A.I. will choose an offensive strategy
+                        
+                            
+                        Choose best strategic move for victory
                         */
                         uniqWinAIRoutes = []
                         winningAIRoutes.forEach((winRoute) => {
-                            if (!uniqWinAIRoutes.includes(JSON.stringify(winRoute)))
+                        if (!uniqWinAIRoutes.includes(JSON.stringify(winRoute)))
                                 uniqWinAIRoutes.push(JSON.stringify(winRoute));
                         })
 
@@ -188,17 +179,25 @@ for (let k = 0; k < 9; k++) {
                         */
                         let bestAIMove = listOfBestAIMove[0];
                         listOfBestAIMove.forEach((AIMove) => {
-                            if (bestAIMove[0] < AIMove[0])
-                                bestAIMove = AIMove
+                        if (bestAIMove[0] < AIMove[0])
+                                    bestAIMove = AIMove
                         })
 
                         selectABlock(MainGameTree[bestAIMove[1]], "O", "blue")
 
+                    } else {
+                        const randClick = Math.round(Math.random() * (blockOptions.length - 1))
+                        selectABlock(MainGameTree[blockOptions[randClick].indexOfState], "O", "blue")
                     }
 
+                    
                 }
-                playGame = true
-            }
+                if (winningAIRoutes.length === 0 && (blockOptions.length <= 1)) {
+                    
+                    alert("It's a draw")
+                    playGame = false
+                    
+                }            
         }
     });
 
@@ -281,6 +280,10 @@ function findVictoryPath(root, historicalAIMoves, winningAIRoute, historicalPlay
 
     }
 }
+
+
+
+
 
 
 

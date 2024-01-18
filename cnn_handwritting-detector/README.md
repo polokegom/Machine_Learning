@@ -1,1 +1,1 @@
-https://www.kaggle.com/datasets/hojjatk/mnist-dataset
+https://www.kaggle.com/datasets/scolianni/mnistasjpg

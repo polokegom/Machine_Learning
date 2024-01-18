@@ -45,10 +45,12 @@ ul li p:hover {
     border: 1px solid rgb(20, 105, 190);     border-radius: 4px; 
     font-family: Verdana, sans-serif; 
     box-sizing: border-box; 
-    margin-left:30px;
     font-size: 20px; 
-    cursor: pointer;   
+    cursor: pointer; 
 
+    display:flex;
+    align-items: center;;  
+    justify-content: center;
 
     background-color:rgb(26, 123, 219);
     color:white;
