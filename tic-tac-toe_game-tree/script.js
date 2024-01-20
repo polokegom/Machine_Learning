@@ -90,10 +90,16 @@ for (let k = 0; k < 9; k++) {
             if (!hasBotCircled && isBlockEmpty) {
                 selectABlock(MainGameTree[k], "X", "rgb(138, 21, 21)")
 
-                //Get all player moves
-                //listAllPlayerMoves = MainGameTree.filter(el => el.stateData === "X").map(el => el.indexOfState)
-               ///checkIsWinner(listAllPlayersMoves);
-                //alert(listAllPlayerMoves)
+                //Check if player won
+                
+                listAllPlayerMoves = MainGameTree.filter(el => el.stateData === "X").map(el => el.indexOfState)
+                if (checkIsWinner(listAllPlayerMoves)){
+                    alert("Congrats! you just beat the A.I.")
+                    playGame = false
+                    return
+                }
+                
+
                 //A.I. bot moves
                 let tempRoot = JSON.parse(JSON.stringify(MainGameTree));
                 count = 0;
@@ -255,7 +261,6 @@ function findVictoryPath(root, historicalAIMoves, winningAIRoute, historicalPlay
         //findVictoryPath(nextChosen_Block, historicalAIMoves,historicalPlayerMoves, null, !isEnemiesTurn)
 
     } else if (isPlayerWinner && historicalPlayerMoves.length > 0) {
-
         winningPlayerRoute.push(historicalPlayerMoves)
     } else {
 
