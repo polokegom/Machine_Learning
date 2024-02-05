@@ -6,3 +6,4 @@ This is a project to test some basic RL concept
 - pip install gym-snake-game
 
 # Link to Gym Dependency:
+https://pypi.org/project/gym-snake-game/
