@@ -6,3 +6,7 @@ This is a project to test some basic RL concept
 - pip install gym-snake-game
 
 # Link to Gym Dependency:
+
+
+#Screenshot
+![Alt Text](doc/snake.png)
