@@ -9,7 +9,7 @@ This is a project to test some basic RL concept
 https://pypi.org/project/gym-snake-game/
 
 
-# Screenshot
+# Screenshot:
 ![Alt Text](doc/snake.png)
 
 
